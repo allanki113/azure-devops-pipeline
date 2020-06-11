@@ -16,25 +16,22 @@ stages:
   jobs:
   - job: BuildJob
     steps:
-    - bash: echo "Running build job"
-
+    - bash: echo "Do the build"
 - stage: DevDeploy
   jobs:
   - deployment: DevDeployJob
     environment: Dev
     strategy:
-     runOnce:
-       deploy:
-         steps:
-           - script: "Deploy to Dev"
-
+      runOnce:
+        deploy:
+          steps:
+          - script: echo deploy to Dev
 - stage: QADeploy
   jobs:
   - deployment: QADeployJob
-    environment: Dev
+    environment: QA
     strategy:
-     runOnce:
-       deploy:
-         steps:
-           - script: "Deploy to QA"
-
+      runOnce:
+        deploy:
+          steps:
+          - script: echo deploy to QA
